@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숙제숙제</title>
+    <style>
+        #wrapper {
+            width: 700px;
+            height: 800px;
+            background: black;
+            margin: auto;
+        }
+
+        #header {
+            width: 100%;
+            height: 100px;
+            background: lightblue;
+            float: left;
+        }
+
+        #photo {
+            width: 100%;
+            height: 450px;
+            background: lightgray;
+            float: left;
+            position: relative;
+        }
+
+        #msg {
+            width: 100%;
+            height: 200px;
+            background: lightblue;
+            float: left;
+        }
+
+        #footer {
+            width: 100%;
+            height: 50px;
+            background: lightslategray;
+            float: left;
+            text-align: center;
+        }
+    </style>
+    <script>
+        //전역변수
+        let wrapper;
+        let header;
+        let photo;
+        let msg;
+        let footer;
+
+        let img;
+        let index = 0;
+
+        let imgArray = [];
+
+        let flag = true;
+
+        function setPics() {
+            let pic1 = {
+                "name": "바다1",
+                "src": "../images/m1.jpg",
+                "msg": "바다임"
+            }
+            imgArray.push(pic1);
+
+            let pic2 = {
+                "name": "바다2",
+                "src": "../images/m2.jpg",
+                "msg": "바다임22"
+            }
+            imgArray.push(pic2);
+
+            let pic3 = {
+                "name": "바다3",
+                "src": "../images/m3.jpg",
+                "msg": "바다임333"
+            }
+            imgArray.push(pic3);
+
+            let pic4 = {
+                "name": "바다4",
+                "src": "../images/m4.jpg",
+                "msg": "바다임4444"
+            }
+            imgArray.push(pic4);
+
+            let pic5 = {
+                "name": "바다5",
+                "src": "../images/m5.jpg",
+                "msg": "바다임5555"
+            }
+            imgArray.push(pic5);
+        }
+
+
+
+        /*
+        class Gallery {
+            constructor() {
+                img = document.createElement("img");
+                img.src = imgArray[0].src;
+                img.style.width = 90 + "%";
+                img.style.height = 400 + "px";
+                
+                img.style.position = "absolote";
+                img.style.left = 0 + "px";
+                img.style.top = 0 + "px";
+                
+                photo.appendChild(img);
+                index++;
+            }
+            showTitle() {
+                header.innerText = imgArray[index].name;
+            }
+            showMsg() {
+                msg.innerText = imgArray[0].msg;
+            }
+        }
+        */
+
+
+
+        function showImages() {
+            img = document.createElement("img");
+            img.src = imgArray[index].src;
+            img.style.width = 90 + "%";
+            img.style.height = 400 + "px";
+
+            img.style.position = "absolote";
+            img.style.left = 0 + "px";
+            img.style.top = 0 + "px";
+
+            photo.appendChild(img);
+
+        }
+        function showTitle() {
+            header.innerText = imgArray[index].name;
+        }
+        function showMsg() {
+            msg.innerText = imgArray[index].msg;
+        }
+
+
+        function slide() {
+            if (flag) { //flag==true
+                index++;
+                if (index >= imgArray.length) { //배열의 길이를 넘어서면
+                    alert("다음 사진이 없음");
+                    //clearTimeout(st);
+                    index = imgArray.length - 1;
+                }
+            } else { //flag==false
+                index--;
+                if (index < 0) {
+                    alert("이전 사진이 없음");
+                    //clearTimeout(st);
+                    index = 0;
+                }
+            }
+
+            //아래의 코드를 무조건 수행하지 않고 
+            //보유한 이미지의 한계에 도달하면, 알맞는 메세지 처리를 하자(자동도 멈춤)
+
+            showImages();
+            showTitle();
+            showMsg();
+        }
+
+
+        //초기화 함수
+        function init() {
+            wrapper = document.getElementById("wrapper");
+            header = document.getElementById("header");
+            photo = document.getElementById("photo");
+            msg = document.getElementById("msg");
+            footer = document.getElementById("footer");
+
+        }
+
+        //문서가 로드되면
+        addEventListener("load", function () {
+            init();
+            setPics(); //json 배열에 담기
+
+
+            document.getElementById("bt_prev").addEventListener("click", function () {
+                flag = false;
+                slide();
+            });
+            document.getElementById("bt_next").addEventListener("click", function () {
+                flag = true;
+                slide();
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="header"></div>
+        <div id="photo">
+
+        </div>
+        <div id="msg"></div>
+        <div id="footer">
+            <button id="bt_prev" onClick="">◀</button>
+            <button id="bt_auto" onClick="">AUTO</button>
+            <button id="bt_stop" onClick="">SYOP</button>
+            <button id="bt_next" onClick="slide()">▶</button>
+        </div>
+    </div>
+</body>
+
+</html>

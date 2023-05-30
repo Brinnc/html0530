@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //뽀미라는 이름의 3살짜리 여아 강아지
+        let a = {
+            "name": "뽀미",
+            "age": 3,
+            "gender": "여"
+        }
+
+        //철수라는 미혼의 28세 남성은 뽀미라는 3살짜리 여 강아지와 5살짜리 뮤라는 남자 고양이를 데리고 있다
+        let member = {
+            "name": "김철수",
+            "isMarried": false,
+            "age": 28,
+            "gender": "남",
+            "pets": [
+                {
+                    "name": "뽀미",
+                    "age": 3,
+                    "gender": "여"
+                },
+                {
+                    "name": "뮤",
+                    "age": 5,
+                    "gender": "남"
+                }
+            ]
+        }
+
+        /* 접근법
+        member.pets[0];
+        {name: '뽀미', age: 3, gender: '여'}
+        member.pets[0].name;
+        '뽀미'
+        member.pets[1].gender;
+        '남'
+        */
+        /*
+        let c = {
+            let a={
+                "name": "뽀미",
+                "age": 3,
+                "gender": "여"
+            }
+            let b={
+                "name": "뮤",
+                "age": 5,
+                "gender": "남"
+            }
+
+            "name": "김철수",
+            "age": 28,
+            "결혼여부": "미혼",
+            "반려동물": a, b
+
+        }
+        */
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
